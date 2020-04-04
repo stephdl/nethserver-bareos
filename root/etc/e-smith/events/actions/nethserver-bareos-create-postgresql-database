@@ -3,9 +3,14 @@
 #
 # Create the pgsql db and set password of bareos
 #
+bareos=`sudo -Hiu postgres psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='bareos'"`
 
-su postgres -c /usr/lib/bareos/scripts/create_bareos_database
-su postgres -c /usr/lib/bareos/scripts/make_bareos_tables
-su postgres -c /usr/lib/bareos/scripts/grant_bareos_privileges
-password=`perl -e "use NethServer::Password; print NethServer::Password::store('bareos');"`
-sudo -Hiu postgres psql -c " ALTER USER bareos WITH PASSWORD '$password';"
+if [[ $bareos -ne '1' ]];then
+    su postgres -c /usr/lib/bareos/scripts/create_bareos_database
+    su postgres -c /usr/lib/bareos/scripts/make_bareos_tables
+    su postgres -c /usr/lib/bareos/scripts/grant_bareos_privileges
+    password=`perl -e "use NethServer::Password; print NethServer::Password::store('bareos');"`
+    sudo -Hiu postgres psql -c " ALTER USER bareos WITH PASSWORD '$password';"
+else 
+    exit 0
+fi
