@@ -16,10 +16,6 @@ BuildArch: noarch
 %description
 skeleton for a new module
 
-%changelog
-* Sat Apr 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.1
-- initial
-
 %prep
 %setup
 
@@ -44,3 +40,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %dir %{_nseventsdir}/%{name}-update
 %doc COPYING
+
+%changelog
+* Sat Apr 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.1
+- initial
