@@ -1,0 +1,61 @@
+#!/usr/bin/perl -w
+
+use esmith::Build::CreateLinks qw(:all);
+
+my $event = 'nethserver-bareos-update';
+
+event_actions($event, qw(
+             initialize-default-databases 00
+             nethserver-bareos-create-postgresql-database 10
+             nethserver-bareos-enablerepo 10
+));
+
+event_templates($event, qw(
+                /etc/bareos/bareos-dir.d/catalog/MyCatalog.conf
+                /etc/bareos/bareos-dir.d/console/admin.conf
+));
+
+event_services($event, qw(
+               bareos-dir restart
+               bareos-sd  restart
+               bareos-fd  restart
+               httpd      restart
+));
+
+$event = 'nethserver-bareos-save';
+
+event_templates($event, qw(
+                /etc/bareos/bareos-dir.d/catalog/MyCatalog.conf
+                /etc/bareos/bareos-dir.d/console/admin.conf
+));
+event_services($event, qw(
+               bareos-dir restart
+               bareos-sd  restart
+               bareos-fd  restart
+               httpd      restart
+));
+
+
+#
+# pre-backup-data
+#
+
+$event = 'pre-backup-data';
+
+event_actions($event, qw(
+             nethserver-bareos-dump 50
+));
+
+#
+# post-restore-data
+#
+
+$event = 'post-restore-data';
+event_actions($event, qw(
+             nethserver-bareos-restore 50
+));
+event_services($event, qw(
+               bareos-dir restart
+               bareos-sd  restart
+               bareos-fd  restart
+));
