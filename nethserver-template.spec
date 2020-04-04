@@ -9,12 +9,16 @@ License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
-Requires: bareos bareos-webui bareos-database-postgresql nethserver-postgresql
+Requires: bareos bareos-webui bareos-database-postgresql 
+Requires: nethserver-postgresql
+
 BuildRequires: nethserver-devtools
 BuildArch: noarch
 
 %description
-skeleton for a new module
+Bareos (Backup Archiving Recovery Open Sourced) is a reliable, cross-network 
+open source software for backup, archiving and recovery of data for all 
+well-established operating systems.
 
 %prep
 %setup
