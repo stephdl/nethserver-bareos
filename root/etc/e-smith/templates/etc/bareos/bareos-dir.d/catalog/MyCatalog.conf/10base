@@ -1,0 +1,14 @@
+{
+use NethServer::Password;
+my $password = NethServer::Password::store("bareos");
+
+$OUT.= qq(
+Catalog \{
+  Name = MyCatalog
+  dbdriver = "postgresql"
+  dbname = "bareos"
+  dbuser = "bareos"
+  dbpassword = "$password"
+\}
+)
+}
