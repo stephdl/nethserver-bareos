@@ -1,0 +1,7 @@
+#
+#60Bareos
+#
+{
+  $OUT .= " RewriteEngine On\n";
+  $OUT .= " RewriteRule ^/bareos-webui(/.*|\$)    https://%{HTTP_HOST}/bareos-webui\$1 [L,R]\n";
+}

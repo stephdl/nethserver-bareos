@@ -13,13 +13,16 @@ event_actions($event, qw(
 event_templates($event, qw(
                 /etc/bareos/bareos-dir.d/catalog/MyCatalog.conf
                 /etc/bareos/bareos-dir.d/console/admin.conf
+                /etc/httpd/conf.d/default-virtualhost.inc
+                /etc/httpd/conf.d/bareos-webui.conf
+                /etc/httpd/conf.d/zzz_bareos-webui.conf
 ));
 
 event_services($event, qw(
                bareos-dir restart
                bareos-sd  restart
                bareos-fd  restart
-               httpd      restart
+               httpd      reload
 ));
 
 $event = 'nethserver-bareos-save';
@@ -27,12 +30,15 @@ $event = 'nethserver-bareos-save';
 event_templates($event, qw(
                 /etc/bareos/bareos-dir.d/catalog/MyCatalog.conf
                 /etc/bareos/bareos-dir.d/console/admin.conf
+                /etc/httpd/conf.d/default-virtualhost.inc
+                /etc/httpd/conf.d/bareos-webui.conf
+                /etc/httpd/conf.d/zzz_bareos-webui.conf
 ));
 event_services($event, qw(
                bareos-dir restart
                bareos-sd  restart
                bareos-fd  restart
-               httpd      restart
+               httpd      reload
 ));
 
 
@@ -59,3 +65,10 @@ event_services($event, qw(
                bareos-sd  restart
                bareos-fd  restart
 ));
+
+#
+# trusted-networks-modify
+#
+my $event = 'trusted-networks-modify';
+templates2events("/etc/httpd/conf.d/zzz_bareos-webui.conf", $event);
+event_services($event, 'httpd' => 'reload');
