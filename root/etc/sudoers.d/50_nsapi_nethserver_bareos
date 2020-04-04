@@ -1,0 +1,7 @@
+ #
+ # nsapi_nethserver_bareos
+ #
+ Cmnd_Alias NSAPI_NETHSERVER_BAREOS = \
+      /usr/libexec/nethserver/api/nethserver-bareos/read
+
+ Defaults!NSAPI_NETHSERVER_BAREOS !requiretty

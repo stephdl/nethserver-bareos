@@ -1,0 +1,26 @@
+{
+  "id": "nethserver-bareos",
+  "name": "bareos",
+  "summary": "Provide the backupc system with bareos",
+  "description": "Provide the backupc system with bareos",
+  "url": "",
+  "homepage": "https://github.com/stephdl/nethserver-bareos",
+  "provides": ["nethserver-bareos"],
+  "release": {
+    "version": "_RELEASE_"
+  },
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/stephdl/dev/issues"
+  },
+  "author": {
+    "name": "Stephane de Labrusse",
+    "url": "https://github.com/stephdl/nethserver-bareos",
+    "email": "stephdl@de-labrusse.fr"
+  },
+  "infoapi": {
+    "path": "nethserver-bareos/read"
+  },
+  "icon": "logo.png",
+  "external": true
+} 
