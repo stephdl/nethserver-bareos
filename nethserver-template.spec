@@ -26,7 +26,6 @@ well-established operating systems.
 %build
 %{makedocs}
 perl createlinks
-sed -i 's/_RELEASE_/%{version}/' %{name}.json
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -55,6 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %dir %{_nseventsdir}/%{name}-update
 %doc COPYING
+%attr(0600,bareos,bareos)%config(noreplace) /etc/bareos/bareos-dir.d/console/admin.conf
 
 %changelog
 * Sat Apr 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.1

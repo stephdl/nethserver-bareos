@@ -12,7 +12,6 @@ event_actions($event, qw(
 
 event_templates($event, qw(
                 /etc/bareos/bareos-dir.d/catalog/MyCatalog.conf
-                /etc/bareos/bareos-dir.d/console/admin.conf
                 /etc/httpd/conf.d/default-virtualhost.inc
                 /etc/httpd/conf.d/bareos-webui.conf
                 /etc/httpd/conf.d/zzz_bareos-webui.conf
@@ -29,7 +28,6 @@ $event = 'nethserver-bareos-save';
 
 event_templates($event, qw(
                 /etc/bareos/bareos-dir.d/catalog/MyCatalog.conf
-                /etc/bareos/bareos-dir.d/console/admin.conf
                 /etc/httpd/conf.d/default-virtualhost.inc
                 /etc/httpd/conf.d/bareos-webui.conf
                 /etc/httpd/conf.d/zzz_bareos-webui.conf
