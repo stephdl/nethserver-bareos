@@ -12,7 +12,9 @@
 Alias /bareos-webui  /usr/share/bareos-webui/public
 
 <Directory /usr/share/bareos-webui/public>
-
+        <FilesMatch \.php\$>
+              SetHandler "proxy:unix:/var/run/rh-php73-php-fpm/bareos.sock|fcgi://localhost/"
+        </FilesMatch>
         Options FollowSymLinks
         AllowOverride None
 

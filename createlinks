@@ -15,6 +15,7 @@ event_templates($event, qw(
                 /etc/httpd/conf.d/default-virtualhost.inc
                 /etc/httpd/conf.d/bareos-webui.conf
                 /etc/httpd/conf.d/zzz_bareos-webui.conf
+                /etc/opt/rh/rh-php73/php-fpm.d/bareos.conf
 ));
 
 event_services($event, qw(
@@ -22,6 +23,7 @@ event_services($event, qw(
                bareos-sd  restart
                bareos-fd  restart
                httpd      reload
+               rh-php73-php-fpm restart 
 ));
 
 $event = 'nethserver-bareos-save';
@@ -31,12 +33,14 @@ event_templates($event, qw(
                 /etc/httpd/conf.d/default-virtualhost.inc
                 /etc/httpd/conf.d/bareos-webui.conf
                 /etc/httpd/conf.d/zzz_bareos-webui.conf
+                /etc/opt/rh/rh-php73/php-fpm.d/bareos.conf
 ));
 event_services($event, qw(
                bareos-dir restart
                bareos-sd  restart
                bareos-fd  restart
                httpd      reload
+               rh-php73-php-fpm restart 
 ));
 
 

@@ -11,6 +11,7 @@ Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: bareos bareos-webui bareos-database-postgresql 
 Requires: nethserver-postgresql
+Requires: nethserver-rh-php73-php-fpm
 
 BuildRequires: nethserver-devtools
 BuildArch: noarch
