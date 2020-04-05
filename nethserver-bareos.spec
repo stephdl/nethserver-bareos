@@ -1,7 +1,7 @@
 Summary: nethserver-bareos  is a module to install bareos
 %define name nethserver-bareos
 Name: %{name}
-%define version 0.0.2
+%define version 0.0.3
 %define release 1
 Version: %{version}
 Release: %{release}%{?dist}
@@ -58,8 +58,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0600,bareos,bareos)%config(noreplace) /etc/bareos/bareos-dir.d/console/admin.conf
 
 %changelog
-* Sun Apr 05 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.2
+* Sun Apr 05 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.3
 - The console/admin.conf is not more a template (noreplace)
+- switch to rh-php73
 
 * Sat Apr 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.1
 - initial
