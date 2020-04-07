@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %dir %{_nseventsdir}/%{name}-update
 %doc COPYING
-%attr(0600,bareos,bareos)%config(noreplace) /etc/bareos/bareos-dir.d/console/admin.conf
+%attr(0640,bareos,bareos) /etc/bareos/bareos-dir.d/user/admin.conf
 
 %changelog
 * Sun Apr 05 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.3

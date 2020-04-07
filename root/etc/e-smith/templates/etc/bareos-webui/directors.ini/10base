@@ -1,0 +1,16 @@
+[localhost-dir]
+enabled              = "yes"
+diraddress           = "localhost"
+dirport              = 9101
+tls_verify_peer      = false
+server_can_do_tls    = false
+server_requires_tls  = false
+client_can_do_tls    = false
+client_requires_tls  = false
+pam_console_name     = "PamConsole"
+{
+    use NethServer::Password;
+    my $password = NethServer::Password::store("bareos");
+
+    $OUT.= "pam_console_password = \"$password\"";
+}
