@@ -1,7 +1,7 @@
 Summary: nethserver-bareos  is a module to install bareos
 %define name nethserver-bareos
 Name: %{name}
-%define version 0.0.4
+%define version 0.0.5
 %define release 1
 Version: %{version}
 Release: %{release}%{?dist}
@@ -55,11 +55,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %dir %{_nseventsdir}/%{name}-update
 %doc COPYING
-%attr(0640,bareos,bareos) /etc/bareos/bareos-dir.d/user/admin.conf
 
 %changelog
+* Fri Apr 10 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.5
+- Members of bareos group are web-ui admin
+
 * Tue Apr 07 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.4
 - Use Pam to authenticate the admin user
+
 * Sun Apr 05 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.3
 - The console/admin.conf is not more a template (noreplace)
 - switch to rh-php73
