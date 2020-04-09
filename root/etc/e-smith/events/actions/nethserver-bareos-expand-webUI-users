@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+/usr/sbin/e-smith/expand-template /etc/bareos/bareos-dir.d/user/admin-web-ui.conf
+/usr/bin/systemctl restart bareos-dir

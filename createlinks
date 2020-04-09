@@ -80,3 +80,14 @@ event_services($event, qw(
 my $event = 'trusted-networks-modify';
 templates2events("/etc/httpd/conf.d/zzz_bareos-webui.conf", $event);
 event_services($event, 'httpd' => 'reload');
+
+
+#
+# group-*
+#
+foreach $event (qw(group-create group-delete group-modify)) {
+
+event_actions($event, qw(
+            nethserver-bareos-expand-webUI-users 99
+));
+}
