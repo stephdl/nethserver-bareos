@@ -1,0 +1,26 @@
+#
+# All members of the group bareos are granted to the web-ui
+#
+User \{
+        Name = "admin"
+        Profile = "webui-admin"
+\}
+
+{
+use JSON;
+my $members = decode_json(`/usr/libexec/nethserver/list-group-members bareos`) || '[]';
+
+foreach my $name (@$members) {
+
+  $name =~ s/\@$DomainName//g;
+
+  $OUT .= qq (
+
+User \{
+        Name = "$name"
+        Profile = "webui-admin"
+\}
+
+);
+}
+}

@@ -1,0 +1,13 @@
+{
+use NethServer::Password;
+my $password = NethServer::Password::store("bareos");
+
+$OUT.= qq(
+Console \{
+    Name = "PamConsole"
+    Password = "$password"
+    UsePamAuthentication = yes
+    TLS Enable = no
+\}
+);
+}

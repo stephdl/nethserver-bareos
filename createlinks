@@ -16,6 +16,9 @@ event_templates($event, qw(
                 /etc/httpd/conf.d/bareos-webui.conf
                 /etc/httpd/conf.d/zzz_bareos-webui.conf
                 /etc/opt/rh/rh-php73/php-fpm.d/bareos.conf
+                /etc/bareos-webui/directors.ini
+                /etc/bareos/bareos-dir.d/console/pam-console.conf
+                /etc/bareos/bareos-dir.d/user/admin-web-ui.conf
 ));
 
 event_services($event, qw(
@@ -34,6 +37,9 @@ event_templates($event, qw(
                 /etc/httpd/conf.d/bareos-webui.conf
                 /etc/httpd/conf.d/zzz_bareos-webui.conf
                 /etc/opt/rh/rh-php73/php-fpm.d/bareos.conf
+                /etc/bareos-webui/directors.ini
+                /etc/bareos/bareos-dir.d/console/pam-console.conf
+                /etc/bareos/bareos-dir.d/user/admin-web-ui.conf
 ));
 event_services($event, qw(
                bareos-dir restart
