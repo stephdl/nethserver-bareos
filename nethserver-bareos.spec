@@ -1,7 +1,7 @@
 Summary: nethserver-bareos  is a module to install bareos
 %define name nethserver-bareos
 Name: %{name}
-%define version 0.0.6
+%define version 0.0.7
 %define release 1
 Version: %{version}
 Release: %{release}%{?dist}
@@ -57,6 +57,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING
 
 %changelog
+* Sat Apr 11 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.7
+- Handle when account provider is not installed
+
 * Fri Apr 10 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.6
 - Members of bareos group are web-ui admin
 
