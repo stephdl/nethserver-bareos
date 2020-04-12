@@ -1,6 +1,7 @@
 {
 use NethServer::Password;
 my $password = NethServer::Password::store("bareos");
+my $tcp = ${'rh-postgresql10-postgresql'}{TCPPort} || '55433';
 
 $OUT.= qq(
 Catalog \{
@@ -9,6 +10,7 @@ Catalog \{
   dbname = "bareos"
   dbuser = "bareos"
   dbpassword = "$password"
+  dbport= "$tcp"
 \}
 )
 }
