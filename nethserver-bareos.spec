@@ -10,7 +10,7 @@ Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: bareos bareos-webui bareos-database-postgresql 
-Requires: nethserver-postgresql
+Requires: nethserver-postgresql10
 Requires: nethserver-rh-php73-php-fpm
 
 BuildRequires: nethserver-devtools
@@ -55,6 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %dir %{_nseventsdir}/%{name}-update
 %doc COPYING
+%attr(0755,root,root) /usr/lib/bareos/scripts/make_catalog_backup_nethserver.sh
 
 %changelog
 * Fri Apr 10 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.6
