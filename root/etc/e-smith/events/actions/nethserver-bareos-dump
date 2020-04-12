@@ -2,5 +2,5 @@
 
 mkdir -p /var/lib/nethserver/bareos/
 chown -R postgres:postgres /var/lib/nethserver/bareos
-su - postgres -c "pg_dump bareos > /var/lib/nethserver/bareos/bareos.sql"
+su - postgres -c "scl enable rh-postgresql10 -- pg_dump --port=55433 bareos > /var/lib/nethserver/bareos/bareos.sql"
 chmod -R 600 /var/lib/nethserver/bareos/*
