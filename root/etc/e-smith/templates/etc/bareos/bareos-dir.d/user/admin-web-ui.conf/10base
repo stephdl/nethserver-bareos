@@ -8,19 +8,21 @@ User \{
 
 {
 use JSON;
-my $members = decode_json(`/usr/libexec/nethserver/list-group-members bareos`) || '[]';
+if ($sssd{'Provider'} ne 'none') {
+  my $members = decode_json(`/usr/libexec/nethserver/list-group-members bareos`);
 
-foreach my $name (@$members) {
+  foreach my $name (@$members) {
 
-  $name =~ s/\@$DomainName//g;
+    $name =~ s/\@$DomainName//g;
 
-  $OUT .= qq (
+    $OUT .= qq (
 
 User \{
         Name = "$name"
         Profile = "webui-admin"
 \}
 
-);
+  );
+  }
 }
 }
