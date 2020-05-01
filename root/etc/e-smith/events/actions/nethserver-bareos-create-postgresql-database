@@ -6,29 +6,15 @@
 
 su - postgres -c "scl enable rh-postgresql12 -- psql --port=55434 -lqt | cut -d \| -f 1 | grep -q -w bareos"
 if [ $? -eq 1 ]; then # database do not exists
-
-    # create db and users
+    su - postgres  -c "export PGPORT=55434;scl enable rh-postgresql12 -- /usr/lib/bareos/scripts/create_bareos_database"
+    su - postgres  -c "export PGPORT=55434;scl enable rh-postgresql12 -- /usr/lib/bareos/scripts/make_bareos_tables"
+    su - postgres  -c "export PGPORT=55434;scl enable rh-postgresql12 -- /usr/lib/bareos/scripts/grant_bareos_privileges"
+    password=`perl -e "use NethServer::Password; print NethServer::Password::store('bareos');"`
     tmp_sql=`mktemp`
     chmod a+r $tmp_sql
-    password=`perl -e "use NethServer::Password; print NethServer::Password::store('bareos');"`
     cat << EOF > $tmp_sql
-    CREATE database bareos ENCODING 'SQL_ASCII' LC_COLLATE 'C' LC_CTYPE 'C' TEMPLATE template0;
-    ALTER DATABASE bareos SET datestyle TO 'ISO, YMD';
+ALTER USER bareos WITH PASSWORD '$password';
 EOF
     su - postgres  -c "scl enable rh-postgresql12 -- psql --port=55434 < $tmp_sql" >/dev/null
-    rm -f $tmp_sql
-
-    su - postgres  -c "scl enable rh-postgresql12 -- psql --port=55434 bareos < /usr/lib/bareos/scripts/ddl/creates/postgresql.sql" > /dev/null
-
-    tmp_sql=`mktemp`
-    chmod a+r $tmp_sql
-    
-    sed -e "s#@DB_NAME@#bareos#" \
-        -e "s#@DB_USER@#bareos#" \
-        -e "s#@DB_PASS@#PASSWORD '${password}'#" \
-        /usr/lib/bareos/scripts/ddl/grants/postgresql.sql >  $tmp_sql
-
-
-    su - postgres  -c "scl enable rh-postgresql12 -- psql --port=55434 bareos <  $tmp_sql" > /dev/null
     rm -f $tmp_sql
 fi
