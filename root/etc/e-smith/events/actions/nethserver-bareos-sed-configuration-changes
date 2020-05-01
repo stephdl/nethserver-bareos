@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+
+if [[ -f '/etc/bareos/bareos-dir.d/job/BackupCatalog.conf' ]];then 
+    sed -i "s|/usr/lib/bareos/scripts/make_catalog_backup.pl MyCatalog|/usr/lib/bareos/scripts/make_catalog_backup_nethserver.sh|" /etc/bareos/bareos-dir.d/job/BackupCatalog.conf
+fi

@@ -8,6 +8,7 @@ event_actions($event, qw(
              initialize-default-databases 00
              nethserver-bareos-create-postgresql-database 10
              nethserver-bareos-enablerepo 10
+             nethserver-bareos-sed-configuration-changes 20
 ));
 
 event_templates($event, qw(
