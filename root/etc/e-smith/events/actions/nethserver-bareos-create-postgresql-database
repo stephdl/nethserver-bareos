@@ -4,7 +4,7 @@
 # create the db and the user bareos
 #
 
-su - postgres -c "scl enable rh-postgresql10 -- psql --port=55433 -lqt | cut -d \| -f 1 | grep -q -w bareos"
+su - postgres -c "scl enable rh-postgresql12 -- psql --port=55434 -lqt | cut -d \| -f 1 | grep -q -w bareos"
 if [ $? -eq 1 ]; then # database do not exists
 
     # create db and users
@@ -15,10 +15,10 @@ if [ $? -eq 1 ]; then # database do not exists
     CREATE database bareos ENCODING 'SQL_ASCII' LC_COLLATE 'C' LC_CTYPE 'C' TEMPLATE template0;
     ALTER DATABASE bareos SET datestyle TO 'ISO, YMD';
 EOF
-    su - postgres  -c "scl enable rh-postgresql10 -- psql --port=55433 < $tmp_sql" >/dev/null
+    su - postgres  -c "scl enable rh-postgresql12 -- psql --port=55434 < $tmp_sql" >/dev/null
     rm -f $tmp_sql
 
-    su - postgres  -c "scl enable rh-postgresql10 -- psql --port=55433 bareos < /usr/lib/bareos/scripts/ddl/creates/postgresql.sql" > /dev/null
+    su - postgres  -c "scl enable rh-postgresql12 -- psql --port=55434 bareos < /usr/lib/bareos/scripts/ddl/creates/postgresql.sql" > /dev/null
 
     tmp_sql=`mktemp`
     chmod a+r $tmp_sql
@@ -29,6 +29,6 @@ EOF
         /usr/lib/bareos/scripts/ddl/grants/postgresql.sql >  $tmp_sql
 
 
-    su - postgres  -c "scl enable rh-postgresql10 -- psql --port=55433 bareos <  $tmp_sql" > /dev/null
+    su - postgres  -c "scl enable rh-postgresql12 -- psql --port=55434 bareos <  $tmp_sql" > /dev/null
     rm -f $tmp_sql
 fi

@@ -16,7 +16,7 @@ if [ -f /var/lib/nethserver/bareos/bareos.sql ]; then
     echo "CREATE database bareos; CREATE USER bareos WITH PASSWORD '$password'; GRANT ALL PRIVILEGES ON DATABASE bareos to bareos;" >> $drop_sql
     # allow new connections to db
     echo "UPDATE pg_database SET datallowconn = 'true' WHERE datname = 'bareos';" >> $drop_sql
-    su - postgres -c "scl enable rh-postgresql10 -- psql --port=55433 < $drop_sql" >/dev/null
-    su - postgres -c "scl enable rh-postgresql10 -- psql --port=55433 bareos < /var/lib/nethserver/bareos/bareos.sql" >/dev/null
+    su - postgres -c "scl enable rh-postgresql12 -- psql --port=55434 < $drop_sql" >/dev/null
+    su - postgres -c "scl enable rh-postgresql12 -- psql --port=55434 bareos < /var/lib/nethserver/bareos/bareos.sql" >/dev/null
     rm -f $drop_sql
 fi

@@ -10,7 +10,7 @@ Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: bareos bareos-webui bareos-database-postgresql 
-Requires: nethserver-postgresql10
+Requires: nethserver-postgresql12
 Requires: nethserver-rh-php73-php-fpm
 
 BuildRequires: nethserver-devtools
