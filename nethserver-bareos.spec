@@ -1,7 +1,7 @@
 Summary: nethserver-bareos  is a module to install bareos
 %define name nethserver-bareos
 Name: %{name}
-%define version 0.0.7
+%define version 0.0.8
 %define release 1
 Version: %{version}
 Release: %{release}%{?dist}
@@ -58,6 +58,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0755,root,root) /usr/lib/bareos/scripts/make_catalog_backup_nethserver.sh
 
 %changelog
+* Fri May 01 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.7
+- Move to rh-postgresql12
+
 * Sat Apr 11 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.7
 - Handle when account provider is not installed
 
