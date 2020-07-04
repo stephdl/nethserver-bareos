@@ -1,7 +1,7 @@
 Summary: nethserver-bareos  is a module to install bareos
 %define name nethserver-bareos
 Name: %{name}
-%define version 0.0.8
+%define version 0.0.9
 %define release 1
 Version: %{version}
 Release: %{release}%{?dist}
@@ -47,6 +47,9 @@ rm -f %{name}-%{version}-%{release}-filelist
 
 %post
 %postun
+/usr/bin/rm -f /etc/httpd/conf.d/zzz_bareos-webui.conf
+/usr/bin/rm -f /etc/httpd/conf.d/bareos-webui.conf
+/usr/bin/systemctl reload httpd
 
 %clean 
 rm -rf $RPM_BUILD_ROOT
@@ -58,7 +61,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0755,root,root) /usr/lib/bareos/scripts/make_catalog_backup_nethserver.sh
 
 %changelog
-* Fri May 01 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.7
+* Sat Jul 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.9
+- Remove http templates after rpm removal
+
+* Fri May 01 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.8
 - Move to rh-postgresql12
 
 * Sat Apr 11 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.7
