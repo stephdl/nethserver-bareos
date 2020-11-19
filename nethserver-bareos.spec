@@ -1,7 +1,7 @@
 Summary: nethserver-bareos  is a module to install bareos
 %define name nethserver-bareos
 Name: %{name}
-%define version 0.0.9
+%define version 0.0.10
 %define release 2
 Version: %{version}
 Release: %{release}%{?dist}
@@ -64,6 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0755,root,root) /usr/lib/bareos/scripts/make_catalog_backup_nethserver.sh
 
 %changelog
+* Thu Nov 19 2020  stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.10
+- Remove the traillin / of linux fpm socket
+
 * Sat Jul 04 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.9
 - Remove http templates after rpm removal
 
