@@ -2,7 +2,7 @@ Summary: nethserver-bareos  is a module to install bareos
 %define name nethserver-bareos
 Name: %{name}
 %define version 0.0.11
-%define release 2
+%define release 3
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
