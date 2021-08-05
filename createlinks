@@ -20,6 +20,7 @@ event_templates($event, qw(
                 /etc/bareos-webui/directors.ini
                 /etc/bareos/bareos-dir.d/console/pam-console.conf
                 /etc/bareos/bareos-dir.d/user/admin-web-ui.conf
+                /etc/nethserver/eorepo.conf
 ));
 
 event_services($event, qw(
